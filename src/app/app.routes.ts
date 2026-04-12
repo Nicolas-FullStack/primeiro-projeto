@@ -1,3 +1,32 @@
 import { Routes } from '@angular/router';
+import { HelloWorld } from './hello-world/hello-world';
+import { DataBinding } from './data-binding/data-binding';
+import { Directives } from './directives/directives';
+import { CustomerList } from './customer-list/customer-list';
+import { PageNotFound } from './page-not-found/page-not-found';
+import { FilhoA } from './filho-a/filho-a';
+import { FilhoB } from './filho-b/filho-b';
+import { CustomerDetails } from './customer-details/customer-details';
+import { guardiaoGuard } from './guardiao-guard';
+import { ReactiveForm } from './reactive-form/reactive-form';
+import { TemplateForm } from './template-form/template-form';
+import { WeatherComponent } from './weather/weather';
+import { Pipes } from './pipes/pipes';
 
-export const routes: Routes = [];
+
+export const routes: Routes = [
+    {path: 'hello-world', title:'Hello World', component: HelloWorld, children: [
+        {path: 'filho-a', title:'Filho A', component: FilhoA},
+        {path: 'filho-b', title:'Filho B', component: FilhoB}
+    ]},
+    {path: 'data-binding', title:'Data Binding', component: DataBinding, canActivate: [guardiaoGuard]},
+    {path: 'directives', title:'Directives', component: Directives},
+    {path: 'customers', title:'Customers', component: CustomerList},
+    {path: 'customer/:id', title: 'Customer Details', component: CustomerDetails},
+    {path: 'reactive-form', title: 'Reactive Form', component: ReactiveForm},
+    {path: 'template-form', title: 'Template Form', component: TemplateForm},
+    {path: 'weather', title: 'Clima', component: WeatherComponent},
+    {path: 'pipes', title: 'Pipes', component: Pipes},
+    {path: '', redirectTo: '/hello-world', pathMatch: 'full'},
+    {path: '**', component: PageNotFound}
+];

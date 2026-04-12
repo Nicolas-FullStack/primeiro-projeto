@@ -1,0 +1,19 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ng-valid[required]{
+    border: 1px solid #42a948;
+}
+
+.ng-invalid:not(form, .ng-pristine){
+    border: 1px solid #d30a1e;
+}

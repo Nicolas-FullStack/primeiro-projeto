@@ -1,0 +1,9 @@
+<h2>filho A</h2>
+
+<p *ngIf="texto">Esse texto veio do component pai: {{ texto }}</p>
+
+<p>
+    <label for="caixaFilha"></label>
+    <input type="text" id="caixaFilha"  #caixafilha>
+    <button (click)="enviar(caixafilha.value)" class="botao vermelho">Enviar para o Pai</button>
+</p>

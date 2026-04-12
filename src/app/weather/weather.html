@@ -1,0 +1,34 @@
+<h2>Clima</h2>
+
+<form [formGroup]="locationsForm" (ngSubmit)="obterRegioes()">
+
+  <label for="city">Cidade: </label> 
+  <input type="text" id="city" formControlName="city" placeholder="Digite a cidade">
+
+  <button type="submit"[disabled]="!locationsForm.valid" class="botao verde"> Buscar Localidades</button>
+</form>
+
+<hr>
+
+<!-- LISTA COM SCROLL -->
+<div *ngIf="locations && locations.length > 0">
+  <h3>Resultados:</h3>
+
+  <div class="lista-cidades">
+    <div  *ngFor="let location of locations"(click)="obterClima(location)" class="item-cidade">
+      {{ location.name }} - {{ location.sys?.country }}
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- CLIMA -->
+<div *ngIf="weatherData">
+  <h3>Clima em {{ selectedLocation?.name }}</h3>
+
+  <p>🌡 Temperatura: {{ weatherData.main.temp }}°C</p>
+  <p>🤒 Sensação térmica: {{ weatherData.main.feels_like }}°C</p>
+  <p>☁️ Clima: {{ weatherData.weather[0].description }}</p>
+  <p>💧 Umidade: {{ weatherData.main.humidity }}%</p>
+</div>
